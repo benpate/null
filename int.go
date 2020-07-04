@@ -14,8 +14,8 @@ func NewInt(value int) Int {
 	}
 }
 
-// Get returns the actual value of this object
-func (i Int) Get() int {
+// Int returns the actual value of this object
+func (i Int) Int() int {
 	return i.value
 }
 

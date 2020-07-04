@@ -8,14 +8,23 @@
 
 ## Simple library for null values in Go
 
-This library provides simple primitives for nullable variables.  Int, Bool, and Float are supported.
+This library provides simple, idiomatic primitives for nullable values in Go.  It supports Int, Bool, and Float types.
 
 ```
-	var b null.Bool // This is null
+	// "b" is null, and ready to use
+	var b null.Bool
 
-	b.Set(false) // This is false
-	b.Set(true) // This is true
-	b.Unset() // This is null again.
+	// Set value to false
+	b.Set(false)
+
+	// Set value to true
+	b.Set(true)
+
+	// Get the value
+	b.Bool()
+
+	// Make the value null again
+	b.Unset()
 ```
 
 ## Pull Requests Welcome

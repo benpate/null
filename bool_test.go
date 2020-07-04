@@ -12,22 +12,22 @@ func TestBool(t *testing.T) {
 
 	assert.True(t, b.IsNull())
 	assert.False(t, b.IsPresent())
-	assert.False(t, b.Get())
+	assert.False(t, b.Bool())
 
 	b.Set(false)
 	assert.False(t, b.IsNull())
 	assert.True(t, b.IsPresent())
-	assert.False(t, b.Get())
+	assert.False(t, b.Bool())
 
 	b.Set(true)
 	assert.False(t, b.IsNull())
 	assert.True(t, b.IsPresent())
-	assert.True(t, b.Get())
+	assert.True(t, b.Bool())
 
 	b.Unset()
 	assert.True(t, b.IsNull())
 	assert.False(t, b.IsPresent())
-	assert.False(t, b.Get())
+	assert.False(t, b.Bool())
 }
 
 func TestNewBool(t *testing.T) {
@@ -35,15 +35,15 @@ func TestNewBool(t *testing.T) {
 	b := NewBool(false)
 	assert.False(t, b.IsNull())
 	assert.True(t, b.IsPresent())
-	assert.False(t, b.Get())
+	assert.False(t, b.Bool())
 
 	b.Set(true)
 	assert.False(t, b.IsNull())
 	assert.True(t, b.IsPresent())
-	assert.True(t, b.Get())
+	assert.True(t, b.Bool())
 
 	b.Unset()
 	assert.True(t, b.IsNull())
 	assert.False(t, b.IsPresent())
-	assert.False(t, b.Get())
+	assert.False(t, b.Bool())
 }

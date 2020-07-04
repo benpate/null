@@ -14,8 +14,8 @@ func NewBool(value bool) Bool {
 	}
 }
 
-// Get returns the actual value of this object
-func (b Bool) Get() bool {
+// Bool returns the actual value of this object
+func (b Bool) Bool() bool {
 	return b.value
 }
 

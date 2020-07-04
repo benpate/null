@@ -14,8 +14,8 @@ func NewFloat(value float64) Float {
 	}
 }
 
-// Get returns the actual value of this object
-func (f Float) Get() float64 {
+// Float returns the actual value of this object
+func (f Float) Float() float64 {
 	return f.value
 }
 
