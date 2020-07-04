@@ -6,7 +6,7 @@
 [![Build Status](http://img.shields.io/travis/benpate/null.svg?style=flat-square)](https://travis-ci.org/benpate/null)
 [![Codecov](https://img.shields.io/codecov/c/github/benpate/null.svg?style=flat-square)](https://codecov.io/gh/benpate/null)
 
-## Simple Nullable library for null values
+## Simple library for null values in Go
 
 This library provides simple primitives for nullable variables.  Int, Bool, and Float are supported.
 
