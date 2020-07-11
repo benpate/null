@@ -1,5 +1,7 @@
 package null
 
+import "strconv"
+
 // Int provides a nullable bool
 type Int struct {
 	value   int
@@ -17,6 +19,11 @@ func NewInt(value int) Int {
 // Int returns the actual value of this object
 func (i Int) Int() int {
 	return i.value
+}
+
+// String returns a string representation of this value
+func (i Int) String() string {
+	return strconv.Itoa(i.value)
 }
 
 // Set applies a new value to the nullable item

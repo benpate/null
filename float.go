@@ -1,5 +1,7 @@
 package null
 
+import "strconv"
+
 // Float provides a nullable float64
 type Float struct {
 	value   float64
@@ -17,6 +19,11 @@ func NewFloat(value float64) Float {
 // Float returns the actual value of this object
 func (f Float) Float() float64 {
 	return f.value
+}
+
+// String returns a string representation of this value
+func (f *Float) String() string {
+	return strconv.FormatFloat(f.value, 'f', -2, 64)
 }
 
 // Set applies a new value to the nullable item
