@@ -1,5 +1,9 @@
 package null
 
+import (
+	"github.com/benpate/derp"
+)
+
 // Bool provides a nullable bool
 type Bool struct {
 	value   bool
@@ -17,6 +21,18 @@ func NewBool(value bool) Bool {
 // Bool returns the actual value of this object
 func (b Bool) Bool() bool {
 	return b.value
+}
+
+func (b Bool) String() string {
+
+	if b.present {
+
+		if b.value {
+			return "true"
+		}
+		return "false"
+	}
+	return ""
 }
 
 // Set applies a new value to the nullable item
@@ -39,4 +55,36 @@ func (b Bool) IsNull() bool {
 // IsPresent returns TRUE if this value is present
 func (b Bool) IsPresent() bool {
 	return b.present
+}
+
+// MarshalJSON implements the json.Marshaller interface
+func (b Bool) MarshalJSON() ([]byte, error) {
+
+	if b.present {
+		if b.value {
+			return []byte("true"), nil
+		}
+		return []byte("false"), nil
+	}
+	return []byte("null"), nil
+}
+
+// UnmarshalJSON implements the json.Unmarshaller interface
+func (b *Bool) UnmarshalJSON(value []byte) error {
+
+	valueStr := string(value)
+
+	switch valueStr {
+	case "true":
+		b.Set(true)
+		return nil
+	case "false":
+		b.Set(false)
+		return nil
+	case "null":
+		b.Unset()
+		return nil
+	}
+
+	return derp.New(500, "null.Bool.UnmarshalJSON", "Invalid boolean value", valueStr)
 }

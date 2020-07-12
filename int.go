@@ -1,6 +1,10 @@
 package null
 
-import "strconv"
+import (
+	"strconv"
+
+	"github.com/benpate/derp"
+)
 
 // Int provides a nullable bool
 type Int struct {
@@ -23,7 +27,12 @@ func (i Int) Int() int {
 
 // String returns a string representation of this value
 func (i Int) String() string {
-	return strconv.Itoa(i.value)
+
+	if i.present {
+		return strconv.Itoa(i.value)
+	}
+
+	return ""
 }
 
 // Set applies a new value to the nullable item
@@ -46,4 +55,37 @@ func (i Int) IsNull() bool {
 // IsPresent returns TRUE if this value is present
 func (i Int) IsPresent() bool {
 	return i.present
+}
+
+// MarshalJSON implements the json.Marshaller interface
+func (i Int) MarshalJSON() ([]byte, error) {
+
+	if i.present {
+		return []byte(strconv.Itoa(i.value)), nil
+	}
+
+	return []byte("null"), nil
+}
+
+// UnmarshalJSON implements the json.Unmarshaller interface
+func (i *Int) UnmarshalJSON(value []byte) error {
+
+	valueStr := string(value)
+
+	// Allow null values to be null
+	if (valueStr == "") || (valueStr == "null") {
+		i.Unset()
+		return nil
+	}
+
+	// Try to convert the value to an integer
+	result, err := strconv.Atoi(valueStr)
+
+	if err == nil {
+		i.Set(result)
+		return nil
+	}
+
+	// Fall through means error
+	return derp.Wrap(err, "null.Int.UnmarshalJSON", "Invalid int value", valueStr)
 }
