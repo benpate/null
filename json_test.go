@@ -140,3 +140,17 @@ func TestMarshal_Full(t *testing.T) {
 	assert.Nil(t, err)
 	assert.Equal(t, `{"int":1,"float":3.14,"bool":true}`, string(result))
 }
+
+func TestMarshal_Alt(t *testing.T) {
+
+	var value testValue
+
+	value.Int.Set(1)
+	value.Float.Set(3.14)
+	value.Bool.Set(false)
+
+	result, err := json.Marshal(value)
+
+	assert.Nil(t, err)
+	assert.Equal(t, `{"int":1,"float":3.14,"bool":false}`, string(result))
+}

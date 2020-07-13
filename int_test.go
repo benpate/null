@@ -8,53 +8,60 @@ import (
 
 func TestInt(t *testing.T) {
 
-	var b Int
+	var i Int
 
-	assert.True(t, b.IsNull())
-	assert.False(t, b.IsPresent())
-	assert.Zero(t, b.Int())
+	assert.True(t, i.IsNull())
+	assert.False(t, i.IsPresent())
+	assert.Zero(t, i.Int())
+	assert.Equal(t, "", i.String())
 
 	// 753 BC - Founding of Rome
-	b.Set(-753)
-	assert.False(t, b.IsNull())
-	assert.True(t, b.IsPresent())
-	assert.Equal(t, -753, b.Int())
+	i.Set(-753)
+	assert.False(t, i.IsNull())
+	assert.True(t, i.IsPresent())
+	assert.Equal(t, -753, i.Int())
+	assert.Equal(t, "-753", i.String())
 
 	// 410 AD - Fall of Rome
-	b.Set(410)
-	assert.False(t, b.IsNull())
-	assert.True(t, b.IsPresent())
-	assert.Equal(t, 410, b.Int())
+	i.Set(410)
+	assert.False(t, i.IsNull())
+	assert.True(t, i.IsPresent())
+	assert.Equal(t, 410, i.Int())
+	assert.Equal(t, "410", i.String())
 
-	b.Unset()
-	assert.True(t, b.IsNull())
-	assert.False(t, b.IsPresent())
-	assert.Zero(t, b.Int())
-
+	i.Unset()
+	assert.True(t, i.IsNull())
+	assert.False(t, i.IsPresent())
+	assert.Zero(t, i.Int())
+	assert.Equal(t, "", i.String())
 }
 
 func TestNewInt(t *testing.T) {
 
-	b := NewInt(0)
-	assert.False(t, b.IsNull())
-	assert.True(t, b.IsPresent())
-	assert.Zero(t, b.Int())
+	i := NewInt(0)
+
+	assert.False(t, i.IsNull())
+	assert.True(t, i.IsPresent())
+	assert.Zero(t, i.Int())
+	assert.Equal(t, "0", i.String())
 
 	// 753 BC - Founding of Rome
-	b.Set(-753)
-	assert.False(t, b.IsNull())
-	assert.True(t, b.IsPresent())
-	assert.Equal(t, -753, b.Int())
+	i.Set(-753)
+	assert.False(t, i.IsNull())
+	assert.True(t, i.IsPresent())
+	assert.Equal(t, -753, i.Int())
+	assert.Equal(t, "-753", i.String())
 
 	// 410 AD - Fall of Rome
-	b.Set(410)
-	assert.False(t, b.IsNull())
-	assert.True(t, b.IsPresent())
-	assert.Equal(t, 410, b.Int())
+	i.Set(410)
+	assert.False(t, i.IsNull())
+	assert.True(t, i.IsPresent())
+	assert.Equal(t, 410, i.Int())
+	assert.Equal(t, "410", i.String())
 
-	b.Unset()
-	assert.True(t, b.IsNull())
-	assert.False(t, b.IsPresent())
-	assert.Zero(t, b.Int())
-
+	i.Unset()
+	assert.True(t, i.IsNull())
+	assert.False(t, i.IsPresent())
+	assert.Zero(t, i.Int())
+	assert.Equal(t, "", i.String())
 }
