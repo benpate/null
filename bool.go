@@ -1,8 +1,6 @@
 package null
 
-import (
-	"github.com/benpate/derp"
-)
+import "github.com/benpate/derp"
 
 // Bool provides a nullable bool
 type Bool struct {
