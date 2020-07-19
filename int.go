@@ -52,6 +52,16 @@ func (i Int) IsNull() bool {
 	return i.present == false
 }
 
+// Interface returns the int value (if present) or NIL
+func (i Int) Interface() interface{} {
+
+	if i.present == false {
+		return nil
+	}
+
+	return i.value
+}
+
 // IsPresent returns TRUE if this value is present
 func (i Int) IsPresent() bool {
 	return i.present

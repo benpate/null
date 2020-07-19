@@ -26,13 +26,23 @@ func (f Float) Float() float64 {
 }
 
 // String returns a string representation of this value
-func (f *Float) String() string {
+func (f Float) String() string {
 
 	if f.present {
 		return strconv.FormatFloat(f.value, 'f', -2, 64)
 	}
 
 	return ""
+}
+
+// Interface returns the float64 value (if present) or NIL
+func (f Float) Interface() interface{} {
+
+	if f.present == false {
+		return nil
+	}
+
+	return f.value
 }
 
 // Set applies a new value to the nullable item

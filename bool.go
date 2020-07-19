@@ -33,6 +33,16 @@ func (b Bool) String() string {
 	return ""
 }
 
+// Interface returns the boolean value (if present) or NIL
+func (b Bool) Interface() interface{} {
+
+	if b.present == false {
+		return nil
+	}
+
+	return b.value
+}
+
 // Set applies a new value to the nullable item
 func (b *Bool) Set(value bool) {
 	b.value = value

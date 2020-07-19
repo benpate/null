@@ -14,6 +14,7 @@ func TestInt(t *testing.T) {
 	assert.False(t, i.IsPresent())
 	assert.Zero(t, i.Int())
 	assert.Equal(t, "", i.String())
+	assert.Nil(t, i.Interface())
 
 	// 753 BC - Founding of Rome
 	i.Set(-753)
@@ -21,6 +22,7 @@ func TestInt(t *testing.T) {
 	assert.True(t, i.IsPresent())
 	assert.Equal(t, -753, i.Int())
 	assert.Equal(t, "-753", i.String())
+	assert.Equal(t, -753, i.Interface())
 
 	// 410 AD - Fall of Rome
 	i.Set(410)
@@ -28,12 +30,14 @@ func TestInt(t *testing.T) {
 	assert.True(t, i.IsPresent())
 	assert.Equal(t, 410, i.Int())
 	assert.Equal(t, "410", i.String())
+	assert.Equal(t, 410, i.Interface())
 
 	i.Unset()
 	assert.True(t, i.IsNull())
 	assert.False(t, i.IsPresent())
 	assert.Zero(t, i.Int())
 	assert.Equal(t, "", i.String())
+	assert.Nil(t, i.Interface())
 }
 
 func TestNewInt(t *testing.T) {
