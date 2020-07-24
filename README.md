@@ -5,6 +5,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/benpate/null?style=flat-square)](https://goreportcard.com/report/github.com/benpate/null)
 [![Build Status](http://img.shields.io/travis/benpate/null.svg?style=flat-square)](https://travis-ci.org/benpate/null)
 [![Codecov](https://img.shields.io/codecov/c/github/benpate/null.svg?style=flat-square)](https://codecov.io/gh/benpate/null)
+![Version](https://img.shields.io/github/v/release/benpate/null?include_prereleases&style=flat-square&color=brightgreen)
 
 ## Simple library for null values in Go
 
